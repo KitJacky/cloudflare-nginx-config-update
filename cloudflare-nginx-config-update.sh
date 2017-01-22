@@ -4,7 +4,7 @@ set -e
 function warning {
     if [[ $opt_quiet = 0 ]]
     then
-        echo "cloudflare-nginx: $@">&2
+        echo "cloudflare-nginx-config-update: $@">&2
     fi
 }
 
@@ -24,7 +24,7 @@ function init_variables {
 
 function parse_basic_options {
     local OPTIND
-    while getopts ":46dvsxrqnhc:" opt; do
+    while getopts ":dqrsn46cxh" opt; do
         case $opt in
             d)
                 warning "-d Enabling debug mode."
@@ -46,11 +46,11 @@ function parse_basic_options {
                 opt_backup=0
             ;;
             4)
-                warning "-4 Disabling IPV4 IPs."
+                warning "-4 Disabling IPv4 IPs."
                 CLOUDFLARE_IP4=""
             ;;
             6)
-                warning "-6 Disabling IPV6 IPs."
+                warning "-6 Disabling IPv6 IPs."
                 CLOUDFLARE_IP6=""
             ;;
             c)
@@ -58,7 +58,7 @@ function parse_basic_options {
                 opt_x_forwarded_for=c
             ;;
             x)
-                warning "-h Disabling adding real_ip_header directive."
+                warning "-x Disabling adding real_ip_header directive."
                 opt_x_forwarded_for=""
             ;;
             h)

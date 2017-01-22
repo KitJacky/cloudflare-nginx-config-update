@@ -1,4 +1,4 @@
-# Cloudflare-Nginx
+# Cloudflare-Nginx-Config-Update
 
 ==============
 
@@ -16,15 +16,15 @@ http://nginx.org/en/docs/http/ngx_http_realip_module.html
 
 ### Synopsis
     
-    cloudflare-nginx    [OPTIONS] [target]
+    cloudflare-nginx-config-update.sh    [OPTIONS] [target]
 
 ### Options, Arguments
 
 `target` is the name of the nginx configration snippet file. Its default value is `/etc/nginx/conf.d/cloudflare.conf`.
 
-* `-c` Using CF-Connecting-IP header instead of the default X-Forwarded-For.
-* `-4` Disabling IPV4 IPs.
-* `-6` Disabling IPV6 IPs.
+* `-c` Using `CF-Connecting-IP` header instead of the default `X-Forwarded-For`.
+* `-4` Disabling IPv4 IPs.
+* `-6` Disabling IPv6 IPs.
 * `-x` Disabling real_ip_header directive.
 * `-r` Real run mode: Overwrite the original file.
 * `-s` Shows the difference between the original file and the newly generated one.
@@ -37,19 +37,19 @@ http://nginx.org/en/docs/http/ngx_http_realip_module.html
 
 By default nothing important will happen
 
-    $ cloudflare-nginx.sh
+    $ cloudflare-nginx-config-update.sh
 
 Showing the potential changes
 
-    $ cloudflare-nginx -s
+    $ cloudflare-nginx-config-update.sh -s
 
 A standard usage:
 
-    $ cloudflare-nginx -sr
+    $ cloudflare-nginx-config-update.sh -sr
 
 If you have logcheck or anything similar enabled, you may want to suppress the less interesting outputs:
 
-    $ cloudflare-nginx -qr
+    $ cloudflare-nginx-config-update.sh -qr
 
 ### Dependencies
 
@@ -65,6 +65,6 @@ Veres Lajos
 
 ### Original source
 
-https://github.com/vlajos/cloudflare-nginx
+https://github.com/vlajos/cloudflare-nginx-config-update
 
 Feel free to use!
